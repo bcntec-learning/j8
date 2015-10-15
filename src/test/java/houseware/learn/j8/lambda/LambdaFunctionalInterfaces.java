@@ -1,4 +1,4 @@
-package houseware.learn.j8;
+package houseware.learn.j8.lambda;
 
 /**
  * @author fphilip@houseware.es

@@ -1,7 +1,8 @@
-package houseware.learn.j8;
+package houseware.learn.j8.lambda;
 
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -49,10 +50,10 @@ public class LambdaLetterCount {
 
     @Test
     public void java_style() {
-        long s = System.currentTimeMillis();
+        long s = System.nanoTime();
         Map<Character, Integer> note = processJavaStyle(NOTE);
         Map<Character, Integer> magazine = processJavaStyle(MAGAZINE);
-        System.err.println("Java Time elapsed?"+(System.currentTimeMillis()-s));
+        System.err.println("Java Time elapsed?"+(System.nanoTime()-s));
 
         Map<Character, Integer> missing = calculateJavaStyle(note, magazine);
 
@@ -81,10 +82,10 @@ public class LambdaLetterCount {
     @Test
     public void lambda_style() {
 
-        long s = System.currentTimeMillis();
+        long s = System.nanoTime();
         Map<Character, Integer> note = processLmbdaStyle(NOTE);
         Map<Character, Integer> magazine = processLmbdaStyle(MAGAZINE);
-        System.err.println("Lambda Time elapsed?"+(System.currentTimeMillis()-s));
+        System.err.println("Lambda Time elapsed?"+(System.nanoTime()-s));
 
     }
 
@@ -97,7 +98,7 @@ public class LambdaLetterCount {
     @Test
     public void lambda_optimized() {
 
-        long s = System.currentTimeMillis();
+        long s = System.nanoTime();
         Map<Character, Integer> note = processLmbdaStyle(NOTE);
 //        Map<Character, Integer> magazine = processLmbdaStyle(MAGAZINE);
 
@@ -107,7 +108,7 @@ public class LambdaLetterCount {
                         filter(note::containsKey).
                         collect(TreeMap::new, (m, c) -> m.merge(c, 1, Integer::sum), Map::putAll);
 
-        System.err.println("Lambda Optimized Time elapsed?"+(System.currentTimeMillis()-s));
+        System.err.println("Lambda Optimized Time elapsed?"+(System.nanoTime()-s));
     }
 
 
