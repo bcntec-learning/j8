@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import static houseware.learn.j8.exercises.streams.Grouping.groupByNationality7;
+import static houseware.learn.j8.exercises.streams.Grouping.groupByNationality8;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +32,10 @@ public class GroupingTest {
         Person viktor = new Person("Viktor", 40, "Serbian");
         Person eva = new Person("Eva", 42, "Norwegian");
         List<Person> collection = asList(sara, eva, viktor);
-//        assertThat(groupByNationality7(collection)).hasSameElementsAs(groupByNationality8(collection));
+        Map<String, List<Person>>  g7= groupByNationality7(collection);
+        Map<String, List<Person>>  g8= groupByNationality8(collection);
+        assertThat(g7.get("Norwegian")).hasSameElementsAs(g8.get("Norwegian"));
+        assertThat(g7.get("Serbian")).hasSameElementsAs(g8.get("Serbian"));
     }
 
 }
