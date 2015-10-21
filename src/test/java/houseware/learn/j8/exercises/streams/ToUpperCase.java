@@ -8,21 +8,19 @@ import static java.util.stream.Collectors.toList;
 /**
  * @author fphilip@houseware.es
  */
-public class FlatCollection {
+public class ToUpperCase {
 
-    public static List<String> transform7(List<List<String>> collection) {
+    public static List<String> transform7(List<String> collection) {
         List<String> newCollection = new ArrayList<>();
-        for (List<String> subCollection : collection) {
-            for (String value : subCollection) {
-                newCollection.add(value);
-            }
+        for (String element : collection) {
+            newCollection.add(element.toUpperCase());
         }
         return newCollection;
     }
 
-    public static List<String> transform8(List<List<String>> collection) {
+    public static List<String> transform8(List<String> collection) {
         return collection.stream() // Convert collection to Stream
-                .flatMap(List::stream) // Replace list with stream
+                .map(String::toUpperCase) // Convert each element to upper case
                 .collect(toList()); // Collect results to a new list
     }
 

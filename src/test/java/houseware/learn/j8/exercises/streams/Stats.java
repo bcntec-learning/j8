@@ -15,6 +15,9 @@ public class Stats {
         max = maxValue;
     }
 
+    public Stats() {
+    }
+
     private long count;
 
     public final long getCount() {
@@ -43,4 +46,15 @@ public class Stats {
         return getCount() > 0 ? (double) getSum() / getCount() : 0.0d;
     }
 
+    public void accept(int age) {
+        sum += age;
+        min = Math.min(min, age);
+        max = Math.max(max, age);
+        count++;
+    }
+
+    public void combine(Stats o) {
+        this.count += o.count;
+
+    }
 }
