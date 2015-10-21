@@ -13,23 +13,8 @@ import java.util.stream.Stream;
 public class Streams5 {
 
     List<String> stringCollection =
-            Arrays.asList("d2", "a2", "b1", "b3", "c");
+            Arrays.asList("d2", "a2", "b1", "b3", "c","a3");
 
-    @Test
-    public void test() {
-
-    }
-
-    @Test
-    public void test8() {
-        Supplier<Stream<String>> streamSupplier =
-                () -> stringCollection
-                        .stream()
-                        .filter(s -> s.startsWith("a"));
-
-        streamSupplier.get().anyMatch(s -> true);
-        streamSupplier.get().noneMatch(s -> true);
-    }
 
     // stream has already been operated upon or closed
     @Test (expected = IllegalStateException.class)
@@ -42,10 +27,36 @@ public class Streams5 {
         stream.noneMatch(s -> true);
     }
 
+    @Test
+    public void test8() {
+
+        Supplier<Stream<String>> streamSupplier =
+                () -> stringCollection
+                        .stream()
+                        .filter(s -> s.startsWith("a"));
+
+        /* Anounymous
+        Supplier<Stream<String>> streamSupplier2 = new Supplier<Stream<String>>(){
+
+            @Override
+            public Stream<String> get() {
+                return stringCollection
+                                        .stream()
+                                        .filter(s -> s.startsWith("a"));
+
+            }
+        };
+
+    */
+        streamSupplier.get().anyMatch(s -> true);
+        streamSupplier.get().noneMatch(s -> true);
+    }
+
+
     // short-circuit
     @Test
     public void test6() {
-        stringCollection
+        boolean b= stringCollection
                 .stream()
                 .map(s -> {
                     System.out.println("map:      " + s);
@@ -55,6 +66,7 @@ public class Streams5 {
                     System.out.println("anyMatch: " + s);
                     return s.startsWith("A");
                 });
+
     }
 
     @Test

@@ -49,7 +49,8 @@ public class OptionalCasesTest {
 
 
     static class Outer {
-        Nested nested = new Nested();
+//        Nested nested = new Nested();
+        Nested nested =null;
 
         public Nested getNested() {
             return nested;

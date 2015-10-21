@@ -16,7 +16,7 @@ public class FunctionStyleWithLambdaTest {
     public static void b() {
 
         System.out.println("=========================");
-        System.out.println("== FunctionStyleTest ===");
+        System.out.println("== FunctiStyleTest ===");
         System.out.println("=========================");
     }
 
@@ -58,7 +58,7 @@ public class FunctionStyleWithLambdaTest {
 
 
         System.out.println("\n===Eastern Style===");
-        persons.forEach(person -> {
+        persons.stream().filter(p-> p.getAge()>12).forEach(person -> {
             System.out.println(
                     person.printCustom(easternStyle)
             );

@@ -8,6 +8,6 @@ public class MyConsoleImpl2  implements MyConsole {
 
     public void print(String str) {
         //todo fphilip
-
+        MyConsole.isNull(str);
     }
 }

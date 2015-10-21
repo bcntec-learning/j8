@@ -22,17 +22,19 @@ public class Java7StyleTest {
     public void test_1() {
 
 
-        List<Person> list1 = Person.list();
 
         // Print Names Western
-        System.out.println("\n===Print Western Names===");
-        for (Person person : list1) {
+        System.out.println("===Print Western Names===");
+        for (Person person :  Person.list()) {
             person.printWesternName();
         }
+    }
 
+    @Test
+    public void test_2() {
         // Print Names Eastern
-        System.out.println("\n===Print Eastern Names===");
-        for (Person person : list1) {
+        System.out.println("===Print Eastern Names===");
+        for (Person person :  Person.list()) {
             person.printEasternName();
         }
 

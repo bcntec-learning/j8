@@ -12,8 +12,8 @@ public class StaticMethodTest {
         System.out.println("Test 1");
         System.out.println("======");
         MyConsoleImpl obj = new MyConsoleImpl();
-        obj.print("test1");
-        obj.isNull("abc");
+        obj.print("test1"); //using default
+        obj.isNull("abc");  //using impl override
     }
 
     @Test
@@ -23,6 +23,7 @@ public class StaticMethodTest {
         MyConsole obj = new MyConsoleImpl();
         obj.print("test2");
 //        obj.isNull("abc"); not visible
+        MyConsole.isNull("abc");
     }
     @Test
     public void test3() {

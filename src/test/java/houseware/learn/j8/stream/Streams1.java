@@ -2,7 +2,7 @@ package houseware.learn.j8.stream;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,18 +11,34 @@ import java.util.Optional;
  */
 public class Streams1 {
 
-    @Test
-    public void test() {
+    static List<String> stringCollection = Arrays.asList(
+            "ddd2", "aaa2", "bbb1", "aaa1", "bbb3", "ccc", "bbb2", "ddd1");
 
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add("ddd2");
-        stringCollection.add("aaa2");
-        stringCollection.add("bbb1");
-        stringCollection.add("aaa1");
-        stringCollection.add("bbb3");
-        stringCollection.add("ccc");
-        stringCollection.add("bbb2");
-        stringCollection.add("ddd1");
+
+    @Test
+    public void test_mapping() {        // mapping
+
+        stringCollection
+                .stream()
+                                        .map(String::toUpperCase)
+
+                        //                .map(new Function<String, String>() {
+                        //                    @Override
+                        //                    public String apply(String s) {
+                        //                        return s.toUpperCase();
+                        //
+                        //                    }
+                        //                })
+//                                        .map(s -> s.toUpperCase())
+                        //                .map(s -> {return s.toUpperCase();})
+                .sorted((a, b) -> b.compareTo(a))
+                .forEach(System.out::println);
+
+        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
+    }
+
+    @Test
+    public void test_filtering() {
 
 
         // filtering
@@ -33,6 +49,11 @@ public class Streams1 {
                 .forEach(System.out::println);
 
         // "aaa2", "aaa1"
+
+    }
+
+    @Test
+    public void test_sorting() {
 
 
         // sorting
@@ -46,17 +67,10 @@ public class Streams1 {
         // "aaa1", "aaa2"
 
 
-        // mapping
+    }
 
-        stringCollection
-                .stream()
-                .map(String::toUpperCase)
-                .sorted((a, b) -> b.compareTo(a))
-                .forEach(System.out::println);
-
-        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
-
-
+    @Test
+    public void test_matching() {
         // matching
 
         boolean anyStartsWithA = stringCollection
@@ -78,6 +92,10 @@ public class Streams1 {
         System.out.println(noneStartsWithZ);      // true
 
 
+    }
+
+    @Test
+    public void test_counting() {
         // counting
 
         long startsWithB = stringCollection
@@ -87,6 +105,11 @@ public class Streams1 {
 
         System.out.println(startsWithB);    // 3
 
+
+    }
+
+    @Test
+    public void test_reducing() {
 
         // reducing
 
