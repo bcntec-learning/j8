@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import static houseware.learn.j8.exercises.streams.Partitioning.partitionAdults7;
+import static houseware.learn.j8.exercises.streams.Partitioning.partitionAdults8;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,7 +33,11 @@ public class PartitioningTest {
         Person viktor = new Person("Viktor", 40);
         Person eva = new Person("Eva", 42);
         List<Person> collection = asList(sara, eva, viktor);
-//        assertThat(partitionAdults7(collection)).hasSameElementsAs(partitionAdults8(collection));
+
+        Map<Boolean, List<Person>> result7 = partitionAdults7(collection);
+        Map<Boolean, List<Person>> result8 = partitionAdults8(collection);
+        assertThat(result7.get(true)).hasSameElementsAs(result8.get(true));
+        assertThat(result7.get(false)).hasSameElementsAs(result8.get(false));
     }
 
 }

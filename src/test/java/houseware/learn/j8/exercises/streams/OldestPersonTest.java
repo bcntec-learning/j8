@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static houseware.learn.j8.exercises.streams.OldestPerson.getOldestPerson7;
+import static houseware.learn.j8.exercises.streams.OldestPerson.getOldestPerson8;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,7 +29,7 @@ public class OldestPersonTest {
         Person viktor = new Person("Viktor", 40);
         Person eva = new Person("Eva", 42);
         List<Person> collection = asList(sara, eva, viktor);
-//        assertThat(getOldestPerson7(collection)).hasSameElementsAs(getOldestPerson8(collection));
+        assertThat(getOldestPerson7(collection)).isEqualToComparingFieldByField(getOldestPerson8(collection));
     }
 
 }
