@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static houseware.learn.j8.exercises.streams.Sum.calculate7;
-import static houseware.learn.j8.exercises.streams.Sum.calculate8;
+import static houseware.learn.j8.exercises.streams.Sum.*;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,7 +22,8 @@ public class SumTest {
     @Test
     public void compare() {
         List<Integer> numbers = asList(1, 2, 3, 4, 5);
-        assertThat(calculate7(numbers)).isEqualTo(calculate8(numbers));
+        List<Integer> nulls = asList(null,null);
+        assertThat(calculate7(numbers)).isEqualTo(calculate8_(nulls));
     }
 
 }

@@ -21,13 +21,18 @@ public class OptionalCasesTest {
         optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
     }
 
-
     @Test
-    public void test3() {
-        Outer outer = new Outer();
-        resolve(() -> outer.getNested().getInner().getFoo())
-                .ifPresent(System.out::println);
+    public void test_() {
+        String f=null;
+        Optional<String> optional = Optional.ofNullable(f);
+
+        optional.isPresent();           // false
+        optional.orElse("fallback");    // "bam"
+
+        optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
     }
+
+
 
     @Test
     public void test2() {
@@ -73,6 +78,15 @@ public class OptionalCasesTest {
         }
     }
 
+
+
+
+    @Test
+    public void test3() {
+        Outer outer = new Outer();
+        resolve(() -> outer.getNested().getInner().getFoo())
+                .ifPresent(System.out::println);
+    }
 
     public static <T> Optional<T> resolve(Supplier<T> resolver) {
         try {
