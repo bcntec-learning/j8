@@ -21,10 +21,9 @@ public class IterateForEachTest {
         new MyList().forEach(new Consumer<Integer>() {
             @Override
             public void accept(Integer integer) {
-
                 System.out.println("Item forEach " + integer);
-
             }
+
         });
 
     }
@@ -47,7 +46,7 @@ public class IterateForEachTest {
 
 
     class MyConsumer implements Consumer<Integer> {
-
+        @Override
         public void accept(Integer t) {
             System.out.println("Consumer impl Value::" + t);
         }

@@ -18,12 +18,15 @@ public class LambdaScope {
                 return this.value;
             }
         };
+
         String resultIC = fooIC.method("");
+
 
         Foo fooLambda = parameter -> {
             String value = "Lambda value";
             return this.value;
         };
+
         String resultLambda = fooLambda.method("");
 
         return "Results: resultIC = " + resultIC +

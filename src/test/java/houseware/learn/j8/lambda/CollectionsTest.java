@@ -22,6 +22,7 @@ public class CollectionsTest {
             public int compare(String a, String b) {
                 return b.compareTo(a);
             }
+
         });
 
         Collections.sort(names, (String a, String b) -> {

@@ -35,7 +35,7 @@ public class Streams6 {
     @Test(expected = NumberFormatException.class)
     public void test6() {
         Stream
-                .of("1.2", "3.7", "3.7", "A")
+                .of("1.2", "3.7", "3.7", "houseware.learn.j8.A")
                 .mapToDouble(Double::valueOf)
                 .average()
                 .ifPresent(System.out::println);

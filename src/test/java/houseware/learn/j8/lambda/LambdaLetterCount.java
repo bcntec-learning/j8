@@ -53,28 +53,12 @@ public class LambdaLetterCount {
         long s = System.nanoTime();
         Map<Character, Integer> note = processJavaStyle(NOTE);
         Map<Character, Integer> magazine = processJavaStyle(MAGAZINE);
-        System.err.println("Java Time elapsed?"+(System.nanoTime()-s));
+        System.out.println("Java Time elapsed?"+(System.nanoTime()-s));
 
         Map<Character, Integer> missing = calculateJavaStyle(note, magazine);
 
-        int i = 0;
-        for (Character character : note.keySet()) {
-            Integer o = note.get(character);
-            Integer q = magazine.get(character);
-            System.out.println(character + " > " + o + " >" + q);
-            if (q == null || q < o) {
-                i++;
-            }
-        }
-        if (i > 0) {
-            System.out.println("This magazine can't used to create this ransom");
-        }
-
 
     }
-
-
-
 
 
 
@@ -85,7 +69,7 @@ public class LambdaLetterCount {
         long s = System.nanoTime();
         Map<Character, Integer> note = processLmbdaStyle(NOTE);
         Map<Character, Integer> magazine = processLmbdaStyle(MAGAZINE);
-        System.err.println("Lambda Time elapsed?"+(System.nanoTime()-s));
+        System.out.println("Lambda Time elapsed?"+(System.nanoTime()-s));
 
     }
 
@@ -108,20 +92,8 @@ public class LambdaLetterCount {
                         filter(note::containsKey).
                         collect(TreeMap::new, (m, c) -> m.merge(c, 1, Integer::sum), Map::putAll);
 
-        System.err.println("Lambda Optimized Time elapsed?"+(System.nanoTime()-s));
+        System.out.println("Lambda Optimized Time elapsed?"+(System.nanoTime()-s));
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -138,6 +110,18 @@ public class LambdaLetterCount {
         return missing;
     }
 
+    public Map<Character, Integer> processLmbdaStyle(String text) {
+        if (text == null) {
+            return null;
+        }
+
+        Stream<Character> i = Stream.of(toCharacter(text));
+        final Map<Character, Integer> count =
+                i.filter(not(Character::isWhitespace)).
+                        collect(TreeMap::new, (m, c) -> m.merge(c, 1, Integer::sum), Map::putAll);
+
+        return count;
+    }
 
 
 
@@ -160,18 +144,6 @@ public class LambdaLetterCount {
     }
 
 
-    public Map<Character, Integer> processLmbdaStyle(String text) {
-        if (text == null) {
-            return null;
-        }
-
-        Stream<Character> i = Stream.of(toCharacter(text));
-        final Map<Character, Integer> count =
-                i.filter(not(Character::isWhitespace)).
-                        collect(TreeMap::new, (m, c) -> m.merge(c, 1, Integer::sum), Map::putAll);
-
-        return count;
-    }
 
     static <T> Predicate<T> not(Predicate<T> p) {
         return t -> !p.test(t);
@@ -187,6 +159,24 @@ public class LambdaLetterCount {
             result[i] = Character.valueOf(array[i]);
         }
         return result;
+    }
+
+
+    private static void show(Map<Character, Integer> note, Map<Character, Integer> magazine){
+
+        int i = 0;
+        for (Character character : note.keySet()) {
+            Integer o = note.get(character);
+            Integer q = magazine.get(character);
+            System.out.println(character + " > " + o + " >" + q);
+            if (q == null || q < o) {
+                i++;
+            }
+        }
+        if (i > 0) {
+            System.out.println("This magazine can't used to create this ransom");
+        }
+
     }
 
 }

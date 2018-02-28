@@ -5,8 +5,15 @@ import org.junit.Test;
 public class CaseInherit1 {
 
 
+    @Test
+    public void test() {
+        D de = new DImpl();
+        de.method();
+    }
+
     interface A {
         void method();
+
         void method2();
     }
 
@@ -20,19 +27,24 @@ public class CaseInherit1 {
     interface B extends A {
         @Override
         default void method() {
-            System.out.println("B");
+            System.out.println("houseware.learn.j8.B");
         }
     }
-/*
-     Error
-    interface D extends B, C {
 
-    }
-*/
 
-    interface D extends B, C {
+    interface D1 extends B, C {
+
         @Override
         default void method() {
+
+        }
+    }
+
+    interface D extends B, C {
+
+        @Override
+        default void method() {
+            C.super.method(); //<<<<<<
             B.super.method(); //<<<<<<
         }
 
@@ -42,14 +54,22 @@ public class CaseInherit1 {
 
         }
     }
-    class DImpl implements D {
+
+    class DImpl implements  D  {
 
     }
 
-    @Test
-    public void test(){
-        D de = new DImpl();
-        de.method();
+    class D2Impl implements  B, C  {
+        @Override
+        public void method() {
+           B.super.method();
+           C.super.method();
+        }
+
+        @Override
+        public void method2() {
+
+        }
     }
 
 }

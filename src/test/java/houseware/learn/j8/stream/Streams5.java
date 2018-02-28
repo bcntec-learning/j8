@@ -64,7 +64,7 @@ public class Streams5 {
                 })
                 .anyMatch(s -> {
                     System.out.println("anyMatch: " + s);
-                    return s.startsWith("A");
+                    return s.startsWith("houseware.learn.j8.A");
                 });
 
     }
@@ -133,7 +133,7 @@ public class Streams5 {
                 })
                 .filter(s -> {
                     System.out.println("filter:  " + s);
-                    return s.startsWith("A");
+                    return s.startsWith("houseware.learn.j8.A");
                 })
                 .forEach(s -> System.out.println("forEach: " + s));
     }
