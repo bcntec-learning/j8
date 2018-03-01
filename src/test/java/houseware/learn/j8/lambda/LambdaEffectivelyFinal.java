@@ -9,16 +9,24 @@ public class LambdaEffectivelyFinal {
     public void method() {
         String localVariable;
         localVariable = "Local";
+
+
+
         Foo foo = parameter -> {
-            //UString localVariable = parameter; // already in use
+            //String localVariable = parameter; // already in use
             //localVariable = parameter; // use final or effectively final
             return localVariable.toUpperCase();
         };
 
-        Foo fooInner = parameter -> {
-            String localVariable1 = parameter; // already in use
+        //private void l(){}
+        Foo inner = string -> {
+            String localVariable1 = string;
             return localVariable1.toUpperCase();
         };
+
+        foo = s -> s.toUpperCase();
+        foo = String::toUpperCase;
+        foo = String::valueOf;
 
     }
 

@@ -30,9 +30,10 @@ public class Lambda2 {
         
         
         Converter<String, Integer> integerConverter0 = new Converter<String, Integer>() {
+            private int l=1;
             @Override
             public Integer convert(String from) {
-                return Integer.valueOf(from);
+                return Integer.valueOf(from)+l;
             }
         };
         convertAndhow(integerConverter0 ,"123");
@@ -71,10 +72,14 @@ public class Lambda2 {
         
 
         // constructor reference
+        int ageDefault = 25;
 
-        PersonFactory<Person> personFactory = Person::new;
-        Person person = personFactory.create("Peter", "Parker");
-        System.out.println(person);
+        PersonFactory<Person> personFactory1 = (f,l) -> new Person(f,l,ageDefault);
+        PersonFactory<Person> personFactory2 = Person::new;
+        Person person1 = personFactory1.create("Peter", "Parker");
+        Person person2 = personFactory2.create("Clark", "kent");
+        System.out.println(person1);
+        System.out.println(person2);
     }
     
     private <A,B> void convertAndhow(Converter<A, B> converter, A data){
