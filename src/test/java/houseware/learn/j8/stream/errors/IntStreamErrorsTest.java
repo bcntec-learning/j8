@@ -17,7 +17,7 @@ public class IntStreamErrorsTest {
         IntStream.iterate(0, i -> i +1 ).forEach(System.out::println);
     }
     @Test
-    public void test_loop_limied() {
+    public void test_loop_inifinte_limied() {
 
         IntStream.iterate(100, i -> i +1 ).limit(10).forEach(System.out::println);
     }
