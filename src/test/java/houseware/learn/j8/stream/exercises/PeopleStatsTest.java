@@ -52,30 +52,40 @@ public class PeopleStatsTest {
     @Test
     public void compare_min() {
         assertThat(
-                getStats7(collection).getMin()).isEqualTo(getStats8(collection).getMin());
+                getStats7(collection).getMin())
+                .isEqualTo(getStats8(collection).getMin());
     }
 
     @Test
     public void compare_max() {
         assertThat(
-                getStats7(collection).getMax()).isEqualTo(getStats8(collection).getMax());
+                getStats7(collection).getMax())
+                .isEqualTo(getStats8(collection).getMax());
     }
 
     @Test
     public void compare_average() {
         assertThat(
-                getStats7(collection).getAverage()).isEqualTo(getStats8(collection).getAverage());
+                getStats7(collection).getAverage())
+                .isEqualTo(getStats8(collection).getAverage());
     }
 
     @Test
     public void compare_sum() {
         assertThat(
-                getStats7(collection).getSum()).isEqualTo(getStats8(collection).getSum());
+                getStats7(collection).getSum())
+                .isEqualTo(getStats8(collection).getSum());
     }
     @Test
     public void compare_count() {
+        Stats s = getStats8(collection);
+        System.out.println(s.getCount());
+        System.out.println(s.getSum());
+        System.out.println(s.getMax());
         assertThat(
-                getStats7(collection).getCount()).isEqualTo(getStats8(collection).getCount());
+                getStats7(collection).getCount())
+                .isEqualTo(s.getCount());
     }
+
 
 }

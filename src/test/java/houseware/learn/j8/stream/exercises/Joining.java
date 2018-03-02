@@ -4,6 +4,8 @@ import java.util.List;
 
 import  java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.joining;
+
 /**
  * @author fphilip@houseware.es
  */
@@ -25,7 +27,7 @@ public class Joining {
     public static String namesToString8(List<Person> people) {
         return people.stream() // Convert collection to Stream
                 .map(Person::getName) // Map Person to name
-                .collect(Collectors.joining(", ", "Names: ", ".")); // Join names
+                .collect(joining(", ", "Names: ", ".")); // Join names
     }
 
 }

@@ -1,5 +1,6 @@
 package houseware.learn.j8.stream;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,16 +13,21 @@ import java.util.concurrent.TimeUnit;
  */
 public class Streams3 {
 
-    public static final int MAX = 1000000;
+    public static final int MAX = 10000000;
 
+    static List<String> values = new ArrayList<>(MAX);
 
-    @Test
-    public void sort_sequential() {
-        List<String> values = new ArrayList<>(MAX);
+    @BeforeClass
+    public void f() {
         for (int i = 0; i < MAX; i++) {
             UUID uuid = UUID.randomUUID();
             values.add(uuid.toString());
         }
+
+    }
+
+    @Test
+    public void sort_sequential() {
 
         // sequential
 
@@ -39,7 +45,7 @@ public class Streams3 {
 
 
     @Test
-    public  void sort_parallel() {
+    public void sort_parallel() {
         List<String> values = new ArrayList<>(MAX);
         for (int i = 0; i < MAX; i++) {
             UUID uuid = UUID.randomUUID();

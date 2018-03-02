@@ -14,7 +14,7 @@ public class IntStreamErrorsTest {
 //    @Test
     public void test_loop_inifinte() {
 
-        IntStream.iterate(0, i -> i +1 ).forEach(System.out::println);
+        IntStream.iterate(0, i -> i +1 ).filter(r->r%10!=0).forEach(System.out::println);
     }
     @Test
     public void test_loop_inifinte_limied() {
@@ -23,7 +23,7 @@ public class IntStreamErrorsTest {
     }
 
 
-    @Test
+    //@Test
     public void test_mod_error() {
 
         IntStream.iterate(0, i -> (i +1)%2 ).distinct().limit(10).forEach(System.out::println);

@@ -7,6 +7,8 @@ import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.averagingInt;
+
 /**
  * @author fphilip@houseware.es
  */
@@ -39,7 +41,7 @@ public class Streams10 {
     private static void test3(List<Person> persons) {
         Double averageAge = persons
                 .stream()
-                .collect(Collectors.averagingInt(p -> p.age));
+                .collect(averagingInt(p -> p.age));
 
         System.out.println(averageAge);
         Assert.assertEquals("19.0", averageAge.toString());

@@ -1,6 +1,5 @@
 package houseware.learn.j8.stream.exercises;
 
-import java.util.IntSummaryStatistics;
 import java.util.List;
 
 /**
@@ -21,24 +20,14 @@ public class PeopleStats {
         return new Stats(people.size(), sum, min, max);
     }
 
-    public static IntSummaryStatistics getStats8_(List<Person> people) {
-        return people.stream()
-                .mapToInt(Person::getAge)
-                .summaryStatistics();
-    }
-    public static IntSummaryStatistics getStats8__(List<Person> people) {
-        IntSummaryStatistics stats = new IntSummaryStatistics();
-         people.stream()
-                .mapToInt(Person::getAge)
-                .forEach(stats::accept);
-        return stats;
-    }
-
-
     public static Stats getStats8(List<Person> people) {
+
+
         return people.stream()
-                .mapToInt(Person::getAge)
-                .collect(Stats::new, Stats::accept, Stats::combine);
+                .mapToInt(Person::getAge).parallel()
+                .collect(Stats::new,
+                        Stats::accept,
+                        Stats::combine);
     }
 
 }

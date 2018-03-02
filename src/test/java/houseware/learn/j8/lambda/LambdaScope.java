@@ -1,5 +1,7 @@
 package houseware.learn.j8.lambda;
 
+import java.util.function.Function;
+
 public class LambdaScope {
 
     private String value = "Enclosing scope value";
@@ -7,6 +9,7 @@ public class LambdaScope {
     public static void main(String[] args) {
         String s = new LambdaScope().scopeExperiment();
         System.out.println(s);
+
     }
 
     public String scopeExperiment() {

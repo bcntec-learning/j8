@@ -3,6 +3,7 @@ package houseware.learn.j8.stream;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,26 +13,18 @@ import java.util.Optional;
 public class Streams1 {
 
     static List<String> stringCollection = Arrays.asList(
-            "ddd2", "aaa2", "bbb1", "aaa1", "bbb3", "ccc", "bbb2", "ddd1");
+            "ddd2", "aaa2", "bbb1", "aaa1", "bbb3", "ccc", "bbb2", "ddd1","aa66");
 
 
     @Test
     public void test_mapping() {        // mapping
 
         stringCollection
-                .stream()
-                                        .map(String::toUpperCase)
+                .stream().map(String::toUpperCase)
 
-                        //                .map(new Function<String, String>() {
-                        //                    @Override
-                        //                    public String apply(String s) {
-                        //                        return s.toUpperCase();
-                        //
-                        //                    }
-                        //                })
 //                                        .map(s -> s.toUpperCase())
                         //                .map(s -> {return s.toUpperCase();})
-                .sorted((a, b) -> b.compareTo(a))
+                .sorted(Comparator.reverseOrder())
                 .forEach(System.out::println);
 
         // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
@@ -60,8 +53,8 @@ public class Streams1 {
 
         stringCollection
                 .stream()
-                .sorted()
                 .filter((s) -> s.startsWith("a"))
+                .sorted()
                 .forEach(System.out::println);
 
         // "aaa1", "aaa2"

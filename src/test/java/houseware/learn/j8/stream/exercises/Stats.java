@@ -1,8 +1,11 @@
 package houseware.learn.j8.stream.exercises;
 
+import lombok.ToString;
+
 /**
  * @author fphilip@houseware.es
  */
+@ToString
 public class Stats {
 
     private long count;
@@ -20,9 +23,11 @@ public class Stats {
         sum = sumValue;
         min = minValue;
         max = maxValue;
+        System.out.println("creae "+this);
     }
 
     public Stats() {
+        System.out.println("creae ");
     }
 
     public final long getCount() {
@@ -47,6 +52,7 @@ public class Stats {
     }
 
     public void accept(int age) {
+        System.out.println("accept");
         sum += age;
         min = Math.min(min, age);
         max = Math.max(max, age);
@@ -54,7 +60,9 @@ public class Stats {
     }
 
     public void combine(Stats o) {
+        System.out.println("combine");
         this.count += o.count;
+        //recalcualr totalizadores
 
     }
 }

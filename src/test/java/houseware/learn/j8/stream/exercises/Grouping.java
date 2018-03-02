@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.groupingBy;
+
 
 /**
  * @author fphilip@houseware.es
@@ -25,7 +27,7 @@ public class Grouping {
 
     public static Map<String, List<Person>> groupByNationality8(List<Person> people) {
         return people.stream() // Convert collection to Stream
-                .collect(Collectors.groupingBy(Person::getNationality)); // Group people by nationality
+                .collect(groupingBy(Person::getNationality)); // Group people by nationality
     }
 
 }
